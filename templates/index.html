@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+
+ <!-- Head-->
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Classification - Prediction</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" type="text/css" />
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+		  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+		  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+		  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+    </head>
+	 <!-- End of Head-->
+	 
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-dark bg-dark static-top">
+            <div class="container">
+                <a class="navbar-brand" href="#!">Classification</a>
+                <a class="navbar-brand" href="#about">Mathematics</a>
+                <a class="navbar-brand" href="#about">About</a>
+                <a class="navbar-brand" href="#about">Home</a>
+            </div>
+        </nav>
+        <!-- Masthead-->
+      
+				<div class="container position-relative">
+					<div class="row justify-content-center">
+						<div class="col-xl-100">
+							<div class="center-header">
+                                <!-- Page heading-->
+                                <table>
+                                    <form action="{{ url_for('predict')}}"method="post">
+                                    <tr>
+                                        <th>
+								            <div class="form-group mx-sm-3 mb-2">
+								                <h4 align="center" class="mb-1 top-header">Gender</h4>
+								            </div>
+							                <div class="form-inline" id="frm">
+							                    <div class="form-group mx-sm-3 mb-2">
+								                    <label for="genderinput" class="sr-only">Gender</label>
+                                                    <input type="text" list='genderoption' name="genderinput" class="form-control form-control-md input-budget" id="genderinput" required placeholder="Example: MALE or FEMALE" >
+                                                    <datalist id="genderoption">
+                                                        <option value="M">MALE</option>  
+                                                        <option value="F">FEMALE</option>
+                                                    </datalist>
+								                </div>
+							                </div>
+                                        </th>
+
+                                        <th>
+								            <div class="form-group mx-sm-3 mb-2">
+								                <h4 align="center" class="mb-1 top-header">Smoking</h4>
+								            </div>
+							                <div class="form-inline" id="frm">
+							                    <div class="form-group mx-sm-3 mb-2">
+								                    <label for="smokinginput" class="sr-only">Smoking</label>
+                                                    <input type="text" list='smokingoption' name="smokinginput" class="form-control form-control-md input-budget" id="smokinginput" required placeholder="Example: YES or NO" >
+                                                    <datalist id="smokingoption">
+                                                        <option value="YES"></option>  
+                                                        <option value="NO"></option>
+                                                    </datalist>
+								                </div>
+							                </div>
+                                        </th>
+
+                                        <th>
+								            <div class="form-group mx-sm-3 mb-2">
+								                <h4 align="center" class="mb-1 top-header">Yellow Fingers</h4>
+								            </div>
+							                <div class="form-inline" id="frm">
+							                    <div class="form-group mx-sm-3 mb-2">
+								                    <label for="yellowinput" class="sr-only">Yellow Fingers</label>
+                                                    <input type="text" list='yellowoption' name="yellowinput" class="form-control form-control-md input-budget" id="yellowinput" required placeholder="Example: YES or NO" >
+                                                    <datalist id="yellowoption">
+                                                        <option value="YES"></option>  
+                                                        <option value="NO"></option>
+                                                    </datalist>
+								                </div>
+							                </div>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>
+								            <div class="form-group mx-sm-3 mb-2">
+								                <h4 align="center" class="mb-1 top-header">Anxiety</h4>
+								            </div>
+							                <div class="form-inline" id="frm">
+							                    <div class="form-group mx-sm-3 mb-2">
+								                    <label for="anxietyinput" class="sr-only">Anxiety</label>
+                                                    <input type="text" list='yellowoption' name="anxietyinput" class="form-control form-control-md input-budget" id="anxietyinput" required placeholder="Example: YES or NO" >
+                                                    <datalist id="anxietyoption">
+                                                        <option value="YES"></option>  
+                                                        <option value="NO"></option>
+                                                    </datalist>
+								                </div>
+							                </div>
+                                        </th>
+
+                                        <th>
+								            <div class="form-group mx-sm-3 mb-2">
+								                <h4 align="center" class="mb-1 top-header">Peer Pressure</h4>
+								            </div>
+							                <div class="form-inline" id="frm">
+							                    <div class="form-group mx-sm-3 mb-2">
+								                    <label for="peerinput" class="sr-only">Peer Pressure</label>
+                                                    <input type="text" list='peeroption' name="peerinput" class="form-control form-control-md input-budget" id="peerinput" required placeholder="Example: YES or NO" >
+                                                    <datalist id="peeroption">
+                                                        <option value="YES"></option>  
+                                                        <option value="NO"></option>
+                                                    </datalist>
+								                </div>
+							                </div>
+                                        </th>
+
+                                        <th>
+								            <div class="form-group mx-sm-3 mb-2">
+								                <h4 align="center" class="mb-1 top-header">Chronic Disease</h4>
+								            </div>
+							                <div class="form-inline" id="frm">
+							                    <div class="form-group mx-sm-3 mb-2">
+								                    <label for="chronicinput" class="sr-only">Chronic Disease</label>
+                                                    <input type="text" list='chronicoption' name="chronicinput" class="form-control form-control-md input-budget" id="chronicinput" required placeholder="Example: YES or NO" >
+                                                    <datalist id="chronicoption">
+                                                        <option value="YES"></option>  
+                                                        <option value="NO"></option>
+                                                    </datalist>
+								                </div>
+							                </div>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>
+								            <div class="form-group mx-sm-3 mb-2">
+								                <h4 align="center" class="mb-1 top-header">Fatigue</h4>
+								            </div>
+							                <div class="form-inline" id="frm">
+							                    <div class="form-group mx-sm-3 mb-2">
+								                    <label for="fatigueinput" class="sr-only">Fatigue</label>
+                                                    <input type="text" list='fatigueoption' name="fatigueinput" class="form-control form-control-md input-budget" id="fatigueinput" required placeholder="Example: YES or NO" >
+                                                    <datalist id="fatigueoption">
+                                                        <option value="YES"></option>  
+                                                        <option value="NO"></option>
+                                                    </datalist>
+								                </div>
+							                </div>
+                                        </th>
+                                        <th>
+								            <div class="form-group mx-sm-3 mb-2">
+								                <h4 align="center" class="mb-1 top-header">Allergy</h4>
+								            </div>
+							                <div class="form-inline" id="frm">
+							                    <div class="form-group mx-sm-3 mb-2">
+								                    <label for="allergyinput" class="sr-only">Allergy</label>
+                                                    <input type="text" list='allergyoption' name="allergyinput" class="form-control form-control-md input-budget" id="allergyinput" required placeholder="Example: YES or NO" >
+                                                    <datalist id="allergyoption">
+                                                        <option value="YES"></option>  
+                                                        <option value="NO"></option>
+                                                    </datalist>
+								                </div>
+							                </div>
+                                        </th>
+                                        <th>
+								            <div class="form-group mx-sm-3 mb-2">
+								                <h4 align="center" class="mb-1 top-header">Wheezing</h4>
+								            </div>
+							                <div class="form-inline" id="frm">
+							                    <div class="form-group mx-sm-3 mb-2">
+								                    <label for="wheezinginput" class="sr-only">Wheezing</label>
+                                                    <input type="text" list='wheezingoption' name="wheezinginput" class="form-control form-control-md input-budget" id="wheezinginput" required placeholder="Example: YES or NO" >
+                                                    <datalist id="wheezingoption">
+                                                        <option value="YES"></option>  
+                                                        <option value="NO"></option>
+                                                    </datalist>
+								                </div>
+							                </div>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>
+								            <div class="form-group mx-sm-3 mb-2">
+								                <h4 align="center" class="mb-1 top-header">Alcohol Consuming</h4>
+								            </div>
+							                <div class="form-inline" id="frm">
+							                    <div class="form-group mx-sm-3 mb-2">
+								                    <label for="alcoholinput" class="sr-only">Alcohol Consuming</label>
+                                                    <input type="text" list='alcoholoption' name="alcoholinput" class="form-control form-control-md input-budget" id="alcoholinput" required placeholder="Example: YES or NO" >
+                                                    <datalist id="alcoholoption">
+                                                        <option value="YES"></option>  
+                                                        <option value="NO"></option>
+                                                    </datalist>
+								                </div>
+							                </div>
+                                        </th>
+                                        <th>
+								            <div class="form-group mx-sm-3 mb-2">
+								                <h4 align="center" class="mb-1 top-header">Coughing</h4>
+								            </div>
+							                <div class="form-inline" id="frm">
+							                    <div class="form-group mx-sm-3 mb-2">
+								                    <label for="coughinginput" class="sr-only">Coughing</label>
+                                                    <input type="text" list='coughingoption' name="coughinginput" class="form-control form-control-md input-budget" id="coughinginput" required placeholder="Example: YES or NO" >
+                                                    <datalist id="coughingoption">
+                                                        <option value="YES"></option>  
+                                                        <option value="NO"></option>
+                                                    </datalist>
+								                </div>
+							                </div>
+                                        </th>
+                                        <th>
+								            <div class="form-group mx-sm-3 mb-2">
+								                <h4 align="center" class="mb-1 top-header">Swallowing Difficulty</h4>
+								            </div>
+							                <div class="form-inline" id="frm">
+							                    <div class="form-group mx-sm-3 mb-2">
+								                    <label for="swallowinginput" class="sr-only">Swallowing Difficulty</label>
+                                                    <input type="text" list='swallowingoption' name="swallowinginput" class="form-control form-control-md input-budget" id="swallowinginput" required placeholder="Example: YES or NO" >
+                                                    <datalist id="swallowingoption">
+                                                        <option value="YES"></option>  
+                                                        <option value="NO"></option>
+                                                    </datalist>
+								                </div>
+							                </div>
+                                        </th>
+                                    </tr>
+                            </table>
+                            <div class="form-group mx-auto mb-2"> <!-- mx-auto for center aligning -->
+                                <h4 align="center" class="mb-1 top-header">Chest Pain</h4>
+                            </div>
+                            <div class="form-inline" id="frm">
+                                <div class="form-group mx-auto mb-2"> <!-- mx-auto for center aligning -->
+                                    <label for="chestinput" class="sr-only">Chest Pain</label>
+                                    <input type="text" list='chestoption' name="chestinput" class="form-control form-control-md input-budget" id="chestinput" required placeholder="Example: YES or NO" >
+                                    <datalist id="chestoption">
+                                        <option value="YES"></option>  
+                                        <option value="NO"></option>
+                                    </datalist>
+                                </div>
+                            </div>
+
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-dark " onclick='fillItem()'  >Predict</button>
+                            </div>
+                        </form>
+                        <br>
+						</div>
+					</div>
+				</div>
+        
+        <!-- Icons Grid-->
+        <section class="features-icons bg-light text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                            <div class="features-icons-icon d-digits"><i class="bi bi-clipboard-check m-auto text-primary"></i></div>
+                            <h3>Gender</h3>
+                            <p class="lead mb-0">Gender provided!</p>
+							<h3 id='sectionGender'> {{ gender }}</h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                            <div class="features-icons-icon d-digits"><i class="bi bi-clipboard-check m-auto text-primary"></i></div>
+                            <h3>Smoking</h3>
+                            <p class="lead mb-0">Smoking provided!</p>
+							<h3 id='sectionSmoking'> {{ smoking }}</h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                            <div class="features-icons-icon d-digits"><i class="bi bi-clipboard-check m-auto text-primary"></i></div>
+                            <h3>Yellow Fingers</h3>
+                            <p class="lead mb-0">Yellow Fingers provided!</p>
+							<h3 id='sectionYellow'> {{ yellow }}</h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                            <div class="features-icons-icon d-digits"><i class="bi bi-clipboard-check m-auto text-primary"></i></div>
+                            <h3>Anxiety</h3>
+                            <p class="lead mb-0">Anxiety provided!</p>
+							<h3 id='sectionAnxiety'> {{ anxiety }}</h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                            <div class="features-icons-icon d-digits"><i class="bi bi-clipboard-check m-auto text-primary"></i></div>
+                            <h3>Peer Pressure</h3>
+                            <p class="lead mb-0">Peer Pressure provided!</p>
+							<h3 id='sectionPeer'> {{ peer }}</h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                            <div class="features-icons-icon d-digits"><i class="bi bi-clipboard-check m-auto text-primary"></i></div>
+                            <h3>Chronic Disease</h3>
+                            <p class="lead mb-0">Chronic Disease provided!</p>
+							<h3 id='sectionChronic'> {{ chronic }}</h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                            <div class="features-icons-icon d-digits"><i class="bi bi-clipboard-check m-auto text-primary"></i></div>
+                            <h3>Fatigue</h3>
+                            <p class="lead mb-0">Fatigue provided!</p>
+							<h3 id='sectionFatigue'> {{ fatigue }}</h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                            <div class="features-icons-icon d-digits"><i class="bi bi-clipboard-check m-auto text-primary"></i></div>
+                            <h3>Allergy</h3>
+                            <p class="lead mb-0">Allergy provided!</p>
+							<h3 id='sectionAllergy'> {{ allergy }}</h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                            <div class="features-icons-icon d-digits"><i class="bi bi-clipboard-check m-auto text-primary"></i></div>
+                            <h3>Wheezing</h3>
+                            <p class="lead mb-0">Wheezing provided!</p>
+							<h3 id='sectionWheezing'> {{ wheezing }}</h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                            <div class="features-icons-icon d-digits"><i class="bi bi-clipboard-check m-auto text-primary"></i></div>
+                            <h3>Alcohol Consuming</h3>
+                            <p class="lead mb-0">Alcohol Consuming provided!</p>
+							<h3 id='sectionAlcohol'> {{ alcohol }}</h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                            <div class="features-icons-icon d-digits"><i class="bi bi-clipboard-check m-auto text-primary"></i></div>
+                            <h3>Coughing</h3>
+                            <p class="lead mb-0">Coughing provided!</p>
+							<h3 id='sectionCoughing'> {{ coughing }}</h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-4"> <!-- remove this if want the section move to center -->
+                        <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                            <div class="features-icons-icon d-digits"><i class="bi bi-clipboard-check m-auto text-primary"></i></div>
+                            <h3>Swallowing Difficulty</h3>
+                            <p class="lead mb-0">Swallowing Difficulty provided!</p>
+							<h3 id='sectionSwallowing'> {{ swallowing }}</h3>
+                        </div>
+                    </div>
+                    <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                        <div class="features-icons-icon mx-auto d-digits"><i class="bi bi-clipboard-check m-auto text-primary"></i></div>
+                        <h3>Chest Pain</h3>
+                        <p class="lead mb-0">Chest Pain provided!</p>
+                        <h3 id='sectionChest'> {{ chest }}</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="features-icons bg-light text-center">
+            <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+                <div class="features-icons-icon d-flex"><i class="bi-terminal m-auto text-primary"></i></div>
+                <h3>Predicted Value</h3>
+                <p class="lead mb-0">Model Predicted!</p>
+                <h3 id='sectionPredicted' >
+                </h3>
+                <h3>{{ prediction_text }}</h3>
+            </div>
+        </div>
+        </section>
+        <!-- Image Showcases-->
+ <!-- Icons Grid-->
+       
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+		<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+        		<script>	
+			    let fillItem = () =>
+                {
+					  
+					  if($('#genderinput').val() != "M" && $('#genderinput').val() != "F")
+                      {
+					  //set border color to the input
+						$('#genderinput').attr('style', "border-radius: 5px; border:#FF0000 1px solid;");
+						alert("Invalid Value Of Gender Input");
+					  } 
+                      else if($('#smokinginput').val() != "YES" && $('#smokinginput').val() != "NO")
+                      {
+                        $('#smokinginput').attr('style', "border-radius: 1px; border:#FF0000 1px solid;");
+                        alert("Invalid Value Of Smoking Input");
+                      }
+                      else if($('#yellowinput').val() != "YES" && $('#yellowinput').val() != "NO")
+                      {
+                        $('#yellowinput').attr('style', "border-radius: 1px; border:#FF0000 1px solid;");
+                        alert("Invalid Value Of Yellow Fingers Input");
+                      }
+                      else if($('#anxietyinput').val() != "YES" && $('#anxietyinput').val() != "NO")
+                      {
+                        $('#anxietyinput').attr('style', "border-radius: 1px; border:#FF0000 1px solid;");
+                        alert("Invalid Value Of Anxiety Input");
+                      }
+                      else if($('#peerinput').val() != "YES" && $('#peerinput').val() != "NO")
+                      {
+                        $('#peerinput').attr('style', "border-radius: 1px; border:#FF0000 1px solid;");
+                        alert("Invalid Value Of Peer Pressure Input");
+                      }
+                      else if($('#chronicinput').val() != "YES" && $('#chronicinput').val() != "NO")
+                      {
+                        $('#chronicinput').attr('style', "border-radius: 1px; border:#FF0000 1px solid;");
+                        alert("Invalid Value Of Chronic Disease Input");
+                      }
+                      else if($('#fatigueinput').val() != "YES" && $('#fatigueinput').val() != "NO")
+                      {
+                        $('#fatigueinput').attr('style', "border-radius: 1px; border:#FF0000 1px solid;");
+                        alert("Invalid Value Of Fatigue Input");
+                      }
+                      else if($('#allergyinput').val() != "YES" && $('#allergyinput').val() != "NO")
+                      {
+                        $('#allergyinput').attr('style', "border-radius: 1px; border:#FF0000 1px solid;");
+                        alert("Invalid Value Of Allergy Input");
+                      }
+                      else if($('#wheezinginput').val() != "YES" && $('#wheezinginput').val() != "NO")
+                      {
+                        $('#wheezinginput').attr('style', "border-radius: 1px; border:#FF0000 1px solid;");
+                        alert("Invalid Value Of Wheezing Input");
+                      }
+                      else if($('#alcoholinput').val() != "YES" && $('#alcoholinput').val() != "NO")
+                      {
+                        $('#alcoholinput').attr('style', "border-radius: 1px; border:#FF0000 1px solid;");
+                        alert("Invalid Value Of Alcohol Consuming Input");
+                      }
+                      else if($('#coughinginput').val() != "YES" && $('#coughinginput').val() != "NO")
+                      {
+                        $('#coughinginput').attr('style', "border-radius: 1px; border:#FF0000 1px solid;");
+                        alert("Invalid Value Of Coughing Input");
+                      }
+                      else if($('#swallowinginput').val() != "YES" && $('#swallowinginput').val() != "NO")
+                      {
+                        $('#swallowinginput').attr('style', "border-radius: 1px; border:#FF0000 1px solid;");
+                        alert("Invalid Value Of Swallowing Difficulty Input");
+                      }
+                      else if($('#chestinput').val() != "YES" && $('#chestinput').val() != "NO")
+                      {
+                        $('#chestinput').attr('style', "border-radius: 1px; border:#FF0000 1px solid;");
+                        alert("Invalid Value Of Chest Pain Input");
+                      }
+                      else
+                      {
+                        $('#genderinput').attr('style', "border-radius: 1px; border:#000000 1px solid;");
+                        $('#smokinginput').attr('style', "border-radius: 1px; border:#000000 1px solid;");
+                        $('#yellowinput').attr('style', "border-radius: 1px; border:#000000 1px solid;");
+                        $('#anxietyinput').attr('style', "border-radius: 1px; border:#000000 1px solid;");
+                        $('#peerinput').attr('style', "border-radius: 1px; border:#000000 1px solid;");
+                        $('#chronicinput').attr('style', "border-radius: 1px; border:#000000 1px solid;");
+                        $('#fatigueinput').attr('style', "border-radius: 1px; border:#000000 1px solid;");
+                        $('#allergyinput').attr('style', "border-radius: 1px; border:#000000 1px solid;");
+                        $('#wheezinginput').attr('style', "border-radius: 1px; border:#000000 1px solid;");
+                        $('#alcoholinput').attr('style', "border-radius: 1px; border:#000000 1px solid;");
+                        $('#coughinginput').attr('style', "border-radius: 1px; border:#000000 1px solid;");
+                        $('#swallowinginput').attr('style', "border-radius: 1px; border:#000000 1px solid;");
+                        $('#chestinput').attr('style', "border-radius: 1px; border:#000000 1px solid;");
+					  }
+				}
+		</script>   
+    </body>
+</html>
