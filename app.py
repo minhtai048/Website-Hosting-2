@@ -55,8 +55,8 @@ def predict():
     
     #feature transformation section
     features = pd.DataFrame({"GENDER":[genderinput], "SMOKING":[smokinginput], "YELLOW_FINGERS":[yellowinput], "ANXIETY":[anxietyinput],
-                             "PEER_PRESSURE":[peerinput], "CHRONIC DISEASE":[chronicinput], "FATIGUE":[fatigueinput], 
-                             "ALLERGY":[allergyinput], "WHEEZING":[wheezinginput], "ALCOHOL CONSUMING":[alcoholinput],
+                             "PEER_PRESSURE":[peerinput], "CHRONIC DISEASE":[chronicinput], "FATIGUE ":[fatigueinput], 
+                             "ALLERGY ":[allergyinput], "WHEEZING":[wheezinginput], "ALCOHOL CONSUMING":[alcoholinput],
                              "COUGHING":[coughinginput], "SWALLOWING DIFFICULTY":[swallowinginput], "CHEST PAIN":[chestinput]})
     features = features.replace('YES', 1)
     features = features.replace('NO', 0)
