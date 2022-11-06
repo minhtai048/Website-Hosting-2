@@ -1,13 +1,3 @@
-# https://youtu.be/l3QVYnMD128
-"""
-Application that predicts heart disease percentage in the population of a town
-based on the number of bikers and smokers. 
-Trained on the data set of percentage of people biking 
-to work each day, the percentage of people smoking, and the percentage of 
-people with heart disease in an imaginary sample of 500 towns.
-"""
-
-
 import numpy as np
 import pandas as pd
 from flask import Flask, request, render_template
