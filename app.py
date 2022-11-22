@@ -62,13 +62,5 @@ def predict():
                            alcohol=alcoholinput, coughing=coughinginput, swallowing=swallowinginput, chest=chestinput,
                            prediction_text='you are likely to have lung cancer as model predicted {}'.format(output))
 
-#When the Python interpreter reads a source file, it first defines a few special variables. 
-#For now, we care about the __name__ variable.
-#If we execute our code in the main program, like in our case here, it assigns
-# __main__ as the name (__name__). 
-#So if we want to run our code right here, we can check if __name__ == __main__
-#if so, execute it here. 
-#If we import this file (module) to another file then __name__ == app (which is the name of this python file).
-
 if __name__ == "__main__":
     app.run()
